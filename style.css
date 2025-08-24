@@ -1,0 +1,325 @@
+.hidden {
+  display: none;
+}
+
+:root {
+  --fg: #ffffff;
+  --fg-dim: rgba(255, 255, 255, 0.85);
+  --shadow: rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+}
+
+#login-form,
+#greeting,
+#clock,
+#todo-form,
+#todo-list,
+#quote {
+  text-shadow: 0 2px 8px var(--shadow);
+}
+
+#clock {
+  margin: 12px 0 6px;
+}
+#greeting {
+  margin: 0 0 18px;
+}
+#todo-form {
+  margin: 18px 0 10px;
+}
+#todo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#quote {
+  margin-top: 22px;
+}
+
+body > img {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  backdrop-filter: blur(1.5px);
+
+  background: radial-gradient(
+      60% 60% at 50% 35%,
+      rgba(0, 0, 0, 0.08),
+      rgba(0, 0, 0, 0.25) 70%,
+      rgba(0, 0, 0, 0.35)
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.2) 40%,
+      rgba(0, 0, 0, 0.35)
+    );
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#clock,
+#greeting,
+#todo-form input,
+#todo-list,
+#quote {
+  font-variant-numeric: tabular-nums;
+}
+
+#clock {
+  font-size: clamp(48px, 10vw, 96px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  margin: 10px 0 8px;
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 3px 12px rgba(0, 0, 0, 0.45),
+    0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+#greeting {
+  font-size: clamp(22px, 3.2vw, 36px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0 0 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+#quote span:first-child {
+  font-style: italic;
+}
+#quote span:last-child {
+  opacity: 0.85;
+}
+
+#login-form input,
+#todo-form input,
+#login-form button {
+  font-size: clamp(14px, 2.6vw, 16px);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+#login-form input,
+#todo-form input {
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+}
+
+#login-form button {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+#login-form button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#todo-list {
+  margin-top: 6px;
+}
+#todo-list li {
+  margin: 6px 0;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  backdrop-filter: blur(1px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+#todo-list li button {
+  font-size: 16px;
+  line-height: 1;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+}
+
+.center-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+#weather {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+#quote {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  max-width: min(720px, 90vw);
+  text-align: center;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  white-space: normal;
+  word-break: keep-all;
+}
+
+#quote span:first-child {
+  display: block;
+  margin-bottom: 4px;
+  font-style: italic;
+}
+#quote span:last-child {
+  display: block;
+  opacity: 0.8;
+  font-size: 0.95em;
+}
+
+#todo-form,
+#todo-list {
+  width: min(560px, 90vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#todo-list {
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 8px;
+  justify-items: stretch;
+}
+
+#todo-list li {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#todo-list li span {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+
+#todo-list li button {
+  flex: 0 0 auto;
+}
+
+#todo-list li:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+#todo-list li span {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#todo-list li button {
+  font-size: 18px;
+  line-height: 1;
+  padding: 6px 8px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+  border-radius: 8px;
+}
+#todo-list li button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+#weather {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+
+  font-size: clamp(12px, 1.6vw, 14px);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(3px);
+  pointer-events: none;
+}
+
+#weather span:first-child {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+#weather span:last-child {
+  opacity: 0.85;
+}
